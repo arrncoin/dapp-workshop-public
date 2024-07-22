@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Gotham-Light";
+  src: url('/fonts/Gotham-Light.otf');
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: 'Gotham-Light';
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --text-main: #333;
+  --text-secondary: #4b525d;
+  --bg-active: #fbfbfc;
+}
+
+html.dark,
+html[data-theme='dark'] {
+  --text-main: #fff;
+  --text-secondary: #6f6e84;
+  --bg-active: #0c1117;
+}
+
+.table th:first-child {
+  position: relative;
+  z-index: 2;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(calc(80%));
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-calc(15%));
+}
+
+@layer components {
+  .linear-gradient-tb-bg {
+    @apply bg-gradient-to-b from-[#B137BE] via-[#432EBE] to-[#042D82];
+  }
+
+  .linear-gradient-tb-bg-2 {
+    @apply bg-gradient-to-b from-[#3795BE] via-[#762EBE] to-[#5200FF];
+  }
+
+  .linear-gradient-tb-bg-3 {
+    @apply bg-gradient-to-b from-[#B137BE] via-[#432EBE] to-[#042D82];
+  }
+
+  .linear-gradient-tb-bg-4 {
+    @apply bg-gradient-to-b from-[#50E3C2] to-[#0070F3];
+  }
+
+  .linear-gradient-tl-to-br-bg {
+    @apply bg-gradient-to-br from-[#CE43FF] via-[#6d9dd8] to-[#8482F7];
+  }
+
+  .linear-gradient-l-to-r-bg {
+    @apply bg-gradient-to-r from-[#CE43FF] via-[#6d9dd8] to-[#8482F7];
+  }
+
+  .linear-gradient-tl-br-bg-2 {
+    @apply bg-gradient-to-br from-[#64e0da] to-[#1055e8];
+  }
+
+  .linear-gradient-l-to-r-bg-2 {
+    @apply bg-gradient-to-r from-[#11365d] via-[#07505a] to-[#08604d];
+  }
+
+  .linear-gradient-l-to-r-bg-3 {
+    @apply bg-gradient-to-r from-[#762EBE] via-[#762EBE] to-[#042D82];
+  }
+}
+
+.brand-gradient-border {
+  background: linear-gradient(to right, #643B80, #854EF9, #643B80) border-box;
+  color: #313149;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
