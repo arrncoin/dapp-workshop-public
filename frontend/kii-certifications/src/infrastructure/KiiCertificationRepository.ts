@@ -7,7 +7,7 @@ import { Certification } from "../domain/models/Certification";
 
 const CONTRACT_ADDRESS = "0xContractAddress";
 const CONTRACT_ABI = [{}];
-
+    //TODO: Verify the operations
 export class KiiCertificationRepository implements ICertificationRepository {
     private provider: ethers.providers.JsonRpcProvider;
     private contract: ethers.Contract;
@@ -42,7 +42,7 @@ export class KiiCertificationRepository implements ICertificationRepository {
     await tx.wait();
     return certification;
 }
-
+    //TODO: Check if delete is an option
     async delete (id: string): Promise < void> {
     const tx = await this.contract.deleteCertification(id);
     await tx.wait();
