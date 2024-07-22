@@ -4,21 +4,17 @@ import { ICertificationRepository } from "../domain/interfaces/ICertificationRep
 export class CertificationService {
     constructor(private certificationRepository: ICertificationRepository) { }
 
-    async createCertification(name: string, issuer: string, date: string): Promise<Certification> {
-        const certification = new Certification(Date.now().toString(), name, issuer, date);
+    async createCertification(id: string, name: string, email: string): Promise<Certification> {
+        const certification = new Certification(id, name, email);
         return await this.certificationRepository.save(certification);
     }
-
-    async getCertifications(): Promise<Certification[]> {
-        return await this.certificationRepository.findAll();
+    // async getCertifications(): Promise<Certification[]> {
+    //     return await this.certificationRepository.findAll();
+    // }
+    async getCertificationById(id:string): Promise<Certification> {
+        return await this.certificationRepository.findById(id);
     }
-
-    async updateCertification(id: string, name: string, issuer: string, date: string): Promise<Certification> {
-        const certification = new Certification(id, name, issuer, date);
-        return await this.certificationRepository.update(certification);
-    }
-
-    async deleteCertification(id: string): Promise<void> {
-        await this.certificationRepository.delete(id);
+    async updateCertification(id: string): Promise<boolean> {
+        return await this.certificationRepository.update(id);
     }
 }
