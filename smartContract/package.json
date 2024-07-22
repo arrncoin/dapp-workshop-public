@@ -1,0 +1,26 @@
+{
+  "name": "smart-contract-chandle",
+  "version": "1.0.0",
+  "description": "This project will help you to understan how to deploy an smart contract using hardhat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiiChain/dapp-workshop-public.git"
+  },
+  "author": "Kii Global",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiiChain/dapp-workshop-public/issues"
+  },
+  "homepage": "https://github.com/KiiChain/dapp-workshop-public#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.6"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
