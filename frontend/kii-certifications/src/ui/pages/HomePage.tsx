@@ -1,5 +1,6 @@
 import React from "react";
 import CertificationList from "../components/CertificationList";
+import CertificationForm from "../components/CertificationForm";
 
 const HomePage: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const HomePage: React.FC = () => {
                     <div className="px-4 py-6 sm:px-0">
                         <div className="border-4 border-dashed border-gray-200 rounded-lg">
                             <CertificationList />
+                            <CertificationForm />
                         </div>
                     </div>
                 </div>
