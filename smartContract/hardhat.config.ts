@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.19", // Solidity Version
+  solidity: "0.8.20", // Solidity Version
   networks: {
     kiichain: {
       url: "https://a.sentry.testnet.kiivalidator.com:8645",

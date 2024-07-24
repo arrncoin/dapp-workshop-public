@@ -1,82 +1,122 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.20;
 
-contract Certifications {
-    uint256 certificationsAmount = 0;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-    // Define the data type
-    struct Student {
-        uint256 id;
+contract Certifications is Ownable {
+    uint256 private certificationsCount = 0;
+
+    constructor(address initialOwner) Ownable(initialOwner) {}
+
+    struct Certificate {
+        bytes32 id;
         string email;
         string name;
         uint256 createdAt;
         bool isValid;
+        string universityName;
+        string courseName;
+        uint16 hoursAmount;
     }
 
-    // Define the events type
     event CertificationCreatedEvent(
-        uint256 id,
+        bytes32 id,
         string email,
         string name,
         uint256 createdAt,
-        bool isValid
+        bool isValid,
+        string universityName,
+        string courseName,
+        uint16 hoursAmount
     );
-    event CertificationUpdatedEvent(uint256 id, bool updated);
 
-    // Create the map with the list of certifications (Create operation)
-    mapping(uint256 => Student) public certificationList;
+    event CertificationUpdatedEvent(bytes32 id, bool isValid);
 
-    // _name means that name is a private variable
+    mapping(bytes32 => Certificate) private certificationList;
+
+    function generateUUID() internal view returns (bytes32) {
+        return
+            keccak256(
+                abi.encodePacked(
+                    block.timestamp,
+                    msg.sender,
+                    certificationsCount
+                )
+            );
+    }
+
     function createCertification(
-        uint256 _id,
         string memory _name,
-        string memory _email
-    ) public {
-        certificationList[_id] = Student(
+        string memory _email,
+        string memory _universityName,
+        string memory _courseName,
+        uint16 _hoursAmount
+    ) public onlyOwner {
+        bytes32 _id = generateUUID();
+        certificationsCount++;
+        certificationList[_id] = Certificate(
             _id,
             _email,
             _name,
             block.timestamp,
-            true // When the certification is created, is valid
+            true,
+            _universityName,
+            _courseName,
+            _hoursAmount
         );
         emit CertificationCreatedEvent(
             _id,
             _email,
             _name,
             block.timestamp,
-            true
+            true,
+            _universityName,
+            _courseName,
+            _hoursAmount
         );
     }
 
-    // Invalid a certification (Update operation)
-    function invalidContrat(uint256 _id) public {
-        Student memory _student = certificationList[_id];
-        _student.isValid = false;
-        certificationList[_id] = _student;
-        emit CertificationUpdatedEvent(_id, true);
+    function invalidateCertification(bytes32 _id) public onlyOwner {
+        require(
+            certificationList[_id].id != bytes32(0),
+            "Invalid certificate ID"
+        );
+        Certificate storage _certificate = certificationList[_id];
+        require(_certificate.isValid, "Certificate is already invalid");
+        _certificate.isValid = false;
+        emit CertificationUpdatedEvent(_id, false);
     }
 
-    // Get contract by Id (Get operation)
     function getCertification(
-        uint256 _id
+        bytes32 _id
     )
         public
         view
         returns (
-            uint256 id,
+            bytes32 id,
             string memory email,
             string memory name,
             uint256 createdAt,
-            bool isValid
+            bool isValid,
+            string memory universityName,
+            string memory courseName,
+            uint16 hoursAmount
         )
     {
-        Student memory student = certificationList[_id];
+        require(
+            certificationList[_id].id != bytes32(0),
+            "Invalid certificate ID"
+        );
+        Certificate memory certificate = certificationList[_id];
         return (
-            student.id,
-            student.email,
-            student.name,
-            student.createdAt,
-            student.isValid
+            certificate.id,
+            certificate.email,
+            certificate.name,
+            certificate.createdAt,
+            certificate.isValid,
+            certificate.universityName,
+            certificate.courseName,
+            certificate.hoursAmount
         );
     }
 }
