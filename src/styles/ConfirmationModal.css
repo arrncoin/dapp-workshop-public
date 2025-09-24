@@ -1,0 +1,57 @@
+/* src/styles/ConfirmationModal.css */
+
+/* Animasi (tetap di sini) */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Kelas-kelas semantik baru untuk komponen modal */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 backdrop-blur-sm;
+}
+
+.modal-card {
+  @apply relative w-full max-w-sm rounded-2xl border border-purple-600 p-6 shadow-xl;
+  /* Latar belakang dinamis menggunakan CSS variable '--backdrop-image' */
+  background-image: 
+    linear-gradient(rgba(15, 12, 41, 0.9), rgba(15, 12, 41, 0.9)),
+    var(--backdrop-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-title {
+  @apply mb-4 text-center text-xl font-bold text-white;
+}
+
+.modal-message {
+  @apply mb-6 text-center text-gray-300;
+}
+
+.modal-actions {
+  @apply flex justify-around gap-4;
+}
+
+/* Gaya dasar untuk tombol */
+.modal-button {
+  @apply flex-1 rounded-md py-2 px-4 font-semibold text-white transition duration-200;
+}
+
+/* Gaya spesifik untuk tombol cancel dan confirm */
+.modal-button.cancel {
+  @apply bg-gray-600 hover:bg-gray-700;
+}
+.modal-button.confirm {
+  @apply bg-purple-600 hover:bg-purple-700;
+}

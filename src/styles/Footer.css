@@ -1,0 +1,35 @@
+/* src/styles/Footer.css */
+
+/* Mengubah container menjadi fixed di pojok kanan bawah */
+.footer-container {
+  @apply fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50;
+  /* z-50 memastikan ikon berada di atas konten lain */
+  /* Posisi disesuaikan untuk mobile (bawah-4) & desktop (bawah-6) */
+}
+
+/* Penampung untuk link-link sosial media */
+.social-links {
+  @apply flex items-center gap-5; /* Jarak antar ikon sedikit dirapatkan */
+}
+
+/* Gaya untuk setiap ikon */
+.social-icon-link {
+  @apply text-gray-500 text-2xl; /* <-- UKURAN IKON DIPERKECIL dari 3xl ke 2xl */
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Efek hover yang menarik */
+.social-icon-link:hover {
+  @apply text-white scale-125 -translate-y-1; /* Berubah warna, membesar, dan sedikit terangkat */
+}
+
+/* Warna spesifik untuk setiap ikon saat hover (opsional) */
+.social-icon-link.twitter:hover {
+  @apply text-[#1DA1F2];
+}
+.social-icon-link.github:hover {
+  @apply text-white;
+}
+.social-icon-link.website:hover {
+  @apply text-pink-400;
+}

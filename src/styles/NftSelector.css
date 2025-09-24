@@ -1,0 +1,46 @@
+/* src/styles/NftSelector.css */
+
+.nft-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 gap-3;
+}
+
+.nft-selection-card {
+  @apply bg-gray-800/50 rounded-lg p-2 border-2 border-transparent cursor-pointer transition-all duration-200;
+  @apply hover:border-purple-500 hover:bg-gray-800;
+}
+
+.nft-selection-card.selected {
+  @apply border-purple-400 ring-2 ring-purple-400 ring-offset-2 ring-offset-gray-900;
+  transform: scale(1.05);
+}
+
+.nft-image-container {
+  @apply aspect-square w-full rounded-md bg-gray-900 overflow-hidden relative;
+}
+
+.nft-image {
+  @apply object-cover w-full h-full;
+}
+
+.nft-info {
+  @apply mt-2 text-center;
+}
+
+.nft-name {
+  @apply text-sm font-bold text-white truncate;
+}
+
+.nft-id {
+  @apply text-xs text-gray-400;
+}
+
+/* Skeleton Loader */
+.skeleton-card {
+  @apply bg-gray-800/50 rounded-lg p-2;
+}
+.skeleton-image {
+  @apply aspect-square w-full rounded-md bg-gray-700 animate-pulse;
+}
+.skeleton-text {
+  @apply h-4 w-3/4 mt-2 mx-auto bg-gray-700 rounded animate-pulse;
+}

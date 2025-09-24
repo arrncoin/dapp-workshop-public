@@ -1,0 +1,18 @@
+/* src/styles/HomePage.css */
+
+.homepage-container {
+  @apply flex flex-col items-center text-center mt-20;
+  margin: 20px auto 0;
+}
+
+.main-title {
+  @apply text-4xl sm:text-5xl md:text-6xl font-bold mb-2 md:mb-2;
+}
+
+.main-subtitle {
+  @apply mt-2 text-base sm:text-lg text-gray-400 mb-8 md:mb-12;
+}
+
+.swap-panel-wrapper {
+  @apply w-full max-w-sm;
+}

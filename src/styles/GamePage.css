@@ -1,0 +1,251 @@
+/* src/styles/GamePage.css */
+
+.game-container {
+  @apply container mx-auto w-full px-4 py-8;
+}
+
+.game-header {
+  @apply mb-12 text-center;
+}
+
+.game-title {
+  @apply mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl;
+}
+
+.game-subtitle {
+  @apply text-lg text-gray-400;
+}
+
+/* === Panel & Layout Dasar === */
+.main-panel,
+.side-panel,
+.create-position-panel {
+  @apply rounded-2xl border border-gray-700 bg-gray-800/50 p-6 backdrop-blur-sm;
+}
+
+.position-manager-grid {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+.main-panel {
+  @apply lg:col-span-2;
+}
+.side-panel {
+  @apply flex flex-col gap-6;
+}
+
+/* === Konten Panel === */
+.panel-header {
+  @apply mb-4 flex items-center justify-between border-b border-gray-700 pb-4;
+}
+.panel-header h3 {
+  @apply text-2xl font-bold;
+}
+
+.tier-display {
+  @apply flex flex-col items-center justify-center rounded-lg bg-purple-600 px-4 py-1 text-white;
+}
+.tier-display span {
+  @apply text-xs font-bold tracking-widest;
+}
+.tier-display .tier-number {
+  @apply -mt-1 text-2xl font-bold;
+}
+
+.lockup-info {
+  @apply mb-6 text-sm text-gray-400;
+}
+
+/* === Tombol Utama === */
+.btn-primary {
+  @apply w-full rounded-lg bg-pink-600 py-3 px-4 font-bold text-white transition-colors disabled:opacity-50 hover:bg-pink-700;
+}
+
+/* === Panel Awal (Create Position) === */
+.create-position-panel {
+  @apply mx-auto flex max-w-lg flex-col items-center gap-4 text-center;
+}
+.create-position-panel h2 {
+  @apply text-3xl font-bold;
+}
+
+.loading-state {
+  @apply p-16 text-center text-xl text-gray-400;
+}
+
+/* === Panel ManageFunds yang Didesain Ulang === */
+.funds-panel-title {
+  @apply mb-2 text-lg font-bold text-white;
+}
+
+/* Grup input utama, sekarang dengan latar belakang dan padding */
+.input-area {
+  @apply rounded-xl border border-gray-700 bg-gray-900/70 p-4;
+}
+
+.balance-and-max-row {
+  @apply mb-2 flex items-center justify-between;
+}
+.balance-display {
+  @apply font-mono text-xs text-gray-400;
+}
+.max-button {
+  @apply cursor-pointer rounded-md bg-purple-600 py-1 px-3 text-xs font-bold text-white transition-colors hover:bg-purple-700;
+}
+
+/* Baris untuk input jumlah dan pilihan token */
+.input-row {
+  @apply flex items-center justify-between;
+}
+.amount-input-wrapper {
+  @apply flex-grow;
+}
+
+.amount-input {
+  @apply w-full appearance-none bg-transparent text-2xl text-white placeholder:text-gray-600 focus:outline-none;
+  -moz-appearance: textfield;
+}
+.amount-input::-webkit-inner-spin-button,
+.amount-input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.token-select-wrapper {
+  @apply relative;
+}
+.token-select {
+  @apply cursor-pointer appearance-none rounded-lg bg-gray-800 p-2 pl-3 pr-8 font-semibold text-white transition-colors hover:bg-gray-700 focus:outline-none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.token-select-chevron {
+  @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400;
+}
+
+.withdraw-button {
+  @apply w-full rounded-lg border border-gray-600 py-2 px-3 text-sm font-bold text-gray-400 transition-colors disabled:opacity-50 hover:bg-gray-700/50;
+}
+
+.panel-subtitle {
+  @apply text-sm font-bold uppercase tracking-wider text-gray-400 mb-3;
+}
+
+/* Daftar Token yang Di-stake */
+.staked-token-list {
+  @apply flex flex-col gap-2;
+}
+.staked-token-item {
+  @apply flex justify-between items-center bg-gray-900/50 py-2 px-3 rounded-lg;
+}
+.staked-token-item .token-name {
+  @apply text-sm text-white;
+}
+.staked-token-item .token-amount {
+  @apply font-mono text-sm text-purple-400;
+}
+.staked-token-empty {
+  @apply text-sm text-gray-500 text-center p-4;
+}
+
+/* Syarat Tier Berikutnya */
+.tier-requirements {
+  @apply mt-4 flex flex-col gap-3;
+}
+.requirement-item {
+  @apply text-sm;
+}
+.requirement-info {
+  @apply flex justify-between mb-1;
+}
+.requirement-progress-bar {
+  @apply w-full bg-gray-700 rounded-full h-1;
+}
+.requirement-progress-bar div {
+  @apply bg-pink-600 h-1.5 rounded-full transition-all duration-500;
+}
+.tier-requirements-empty {
+  @apply text-xs text-gray-500 mt-4;
+}
+
+/* Gaya untuk Navigasi Tab */
+.game-tabs {
+  @apply mb-8 flex items-center justify-center gap-2 rounded-lg bg-gray-800/50 p-1;
+}
+.tab-btn {
+  @apply w-full rounded-md py-2.5 px-4 text-center font-semibold text-gray-400 transition-colors duration-300;
+}
+.tab-btn.active {
+  @apply bg-purple-600 text-white shadow-md;
+}
+.game-content {
+  @apply mt-8;
+}
+
+/* Gaya untuk Panel Informasi Umum */
+.info-panel {
+  @apply rounded-xl border border-gray-700 bg-gray-800/50 p-8 text-center text-gray-400;
+}
+
+/* Gaya untuk Galeri NFT */
+.nft-gallery-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6;
+}
+.nft-card {
+  @apply rounded-lg border border-gray-700 bg-gray-800 p-3 transition-all duration-300 hover:border-pink-500 hover:shadow-lg;
+}
+.nft-card-image {
+  @apply mb-3 flex aspect-square items-center justify-center rounded-md bg-gray-900 text-4xl;
+}
+.nft-card-info {
+  @apply text-sm;
+}
+.nft-card-info p { @apply font-bold text-white; }
+.nft-card-info span { @apply text-xs text-purple-400; }
+.btn-secondary {
+  @apply mt-3 w-full rounded-md bg-gray-600 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-gray-500 disabled:opacity-50;
+}
+
+/* Gaya untuk Dasbor Staking NFT */
+.nft-staking-dashboard {
+  @apply grid grid-cols-1 gap-8 lg:grid-cols-3;
+}
+.reward-panel {
+  @apply lg:col-span-1 flex h-fit flex-col items-center rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 p-6 text-center text-white;
+}
+.reward-panel h3 { @apply text-lg font-bold; }
+.reward-panel p { @apply my-4; }
+.reward-panel p span { @apply block text-4xl font-bold; }
+
+.staking-area {
+  @apply lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6;
+}
+.wallet-nfts, .staked-nfts {
+  @apply flex flex-col gap-4 rounded-xl border border-gray-700 bg-gray-800/50 p-4;
+}
+.wallet-nfts h4, .staked-nfts h4 {
+  @apply font-bold text-white;
+}
+.nft-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+.nft-selection-card {
+  @apply cursor-pointer rounded-lg border-2 border-transparent p-2 transition-all duration-200;
+}
+.nft-selection-card:hover {
+  @apply border-purple-500/50 bg-gray-900/50;
+}
+.nft-selection-card.selected {
+  @apply border-pink-500 ring-2 ring-pink-500;
+}
+.nft-selection-card img {
+  @apply aspect-square w-full rounded-md object-cover;
+}
+.nft-selection-card p {
+  @apply mt-1 text-center text-xs font-bold text-white;
+}
+.empty-state {
+  @apply flex h-full items-center justify-center text-center text-sm text-gray-500;
+}
+.error-message {
+  @apply mt-3;
+}

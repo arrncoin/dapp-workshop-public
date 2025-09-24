@@ -1,0 +1,43 @@
+/* src/styles/FaucetPage.css */
+
+.faucet-container {
+  @apply container mx-auto px-4 py-8 w-full;
+}
+
+.faucet-header {
+  @apply text-center mb-12;
+}
+
+.faucet-title {
+  @apply text-4xl sm:text-5xl font-bold mb-2;
+}
+
+.faucet-subtitle {
+  @apply text-lg text-gray-400;
+}
+
+/* Grid untuk kartu-kartu Faucet */
+.faucet-grid {
+  @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Gaya untuk setiap kartu Faucet */
+.faucet-card {
+  @apply bg-gray-800/60 border border-gray-700 rounded-2xl p-6 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/10;
+}
+
+.card-token-name {
+  @apply text-2xl font-bold text-white;
+}
+
+.card-token-balance {
+  @apply text-gray-400 text-sm;
+}
+
+.card-token-balance span {
+  @apply font-mono text-pink-400;
+}
+
+.card-claim-button {
+  @apply w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}

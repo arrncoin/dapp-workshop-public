@@ -1,0 +1,31 @@
+/* src/styles/Header.css */
+
+.header-container {
+  @apply w-full p-6 flex justify-between items-center bg-gray-800;
+}
+
+.header-logo {
+  @apply text-5xl font-bold text-pink-400 hover:text-pink-500;
+}
+
+.header-nav-center {
+  @apply absolute left-1/2 -translate-x-1/2;
+  @apply hidden md:flex items-center gap-x-6;
+}
+
+.header-links-container {
+  @apply flex space-x-6;
+}
+
+.header-connect-button-container {
+  @apply flex justify-end;
+}
+
+/* Kelas untuk Link Navigasi */
+.header-nav-link {
+  @apply font-semibold transition-colors duration-200 text-gray-400 hover:text-pink-400;
+}
+
+.header-nav-link-active {
+  @apply text-pink-400;
+}

@@ -1,0 +1,226 @@
+/* src/styles/SwapPanel.css */
+
+/* Variabel warna untuk tema yang konsisten */
+:root {
+  --card-bg: #1a1b23;
+  --input-bg: #2d2e36;
+  --border-color: #43444d;
+  --text-primary: #ffffff;
+  --text-secondary: #a9a9b3;
+  --primary-color: #f63bd7; /* Blue 600 */
+  --primary-hover: #cde44c; /* Blue 700 */
+  --secondary-color: #4b5563; /* Gray 600 */
+  --secondary-hover: #374151; /* Gray 700 */
+  --success-color: #22c55e; /* Green 500 */
+  --error-color: #ef4444;   /* Red 500 */
+  --font-family: inherit;
+}
+
+/* Container utama panel */
+.panel-card {
+  /* Ganti nilai RGB (26, 27, 35) ini dengan nilai RGB
+     yang sesuai dengan var(--card-bg) Anda.
+     Angka terakhir, 0.6, berarti 60% opaque atau 40% transparan. */
+  background-color: rgba(26, 27, 35, 0.5);
+
+  /* (Opsional, tapi sangat disarankan) Efek kaca buram (frosted glass) */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Untuk support browser Safari */
+
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  max-width: 500px;
+  margin: 40px auto 0;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+}
+
+.panel-title {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.panel-label {
+  display: block;
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Grup untuk input dan elemen lainnya */
+.input-group {
+  margin-bottom: 16px;
+}
+
+/* Styling untuk input dan select box */
+.panel-input,
+.panel-select {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem; /* 16px */
+  /* Transisi ini akan membuat perubahan warna menjadi mulus */
+  transition: border-color 0.2s;
+}
+
+/* Saat mouse berada di atas (hover) atau saat elemen di-klik (focus),
+  warna border akan berubah.
+*/
+.panel-input:hover,
+.panel-input:focus,
+.panel-select:hover,
+.panel-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Teks untuk menampilkan estimasi */
+.panel-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem; /* 14px */
+}
+
+.estimation-summary {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.estimation-summary strong {
+  color: var(--text-primary);
+}
+
+/* Grup Tombol (Single/Multi Swap) */
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+/* Tombol dasar */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  font-size: 1rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Varian Tombol */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+}
+
+/* Tombol toggle yang aktif */
+.btn-active {
+  background-color: var(--primary-color) !important;
+}
+
+/* Bagian Multi Swap */
+.multi-target-list {
+  margin-bottom: 16px;
+}
+
+.multi-target-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.multi-target-select {
+  flex: 1; /* Mengambil sisa ruang */
+}
+
+.multi-target-percent {
+  width: 80px; /* Lebar tetap untuk input persen */
+  text-align: center;
+}
+
+.multi-target-estimation {
+  min-width: 120px;
+  text-align: left;
+}
+
+.multi-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.multi-actions .btn-secondary {
+  width: auto; /* Agar tombol 'Add' tidak full width */
+  padding: 8px 16px;
+}
+
+.total-percent-display {
+  font-weight: 600;
+}
+.valid-percent {
+  color: var(--success-color);
+}
+.invalid-percent {
+  color: var(--error-color);
+}
+
+/* Tambahan untuk src/styles/SwapPanel.css */
+
+.label-with-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px; /* Jarak antara label dan select box */
+}
+
+/* Menghilangkan margin bawah default dari label di dalam flexbox ini */
+.label-with-balance .panel-label {
+  margin-bottom: 0;
+}
+
+.balance-display {
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-secondary);
+}
+
+.max-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.max-button:hover {
+  background-color: rgba(59, 130, 246, 0.2); /* Warna primary dengan opacity */
+}
