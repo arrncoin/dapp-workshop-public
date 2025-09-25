@@ -17,7 +17,7 @@ export default function SwapPage() {
   }
 
   return (
-    <div className="homepage-container">
+    <div className={styles.homepageContainer}>
       <h2 className={styles.h2}>Manage your swap assets</h2>
 
       {/* Wadah utama yang mengatur layout 2 kolom */}
