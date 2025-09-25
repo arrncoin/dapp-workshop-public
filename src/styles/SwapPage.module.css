@@ -1,28 +1,15 @@
 /* src/styles/SwapPage.css */
 
-/**
- * Wadah utama untuk layout 2 kolom di halaman swap.
- * - `flex-col`: Menumpuk panel di mobile.
- * - `md:flex-row`: Mendampingkan panel di desktop.
- * - `items-start`: Meratakan panel dari atas.
- */
 .swap-page-layout {
   @apply flex items-start justify-center gap-8 w-full px-4;
-  @apply flex-col md:flex-row;
+  @apply flex-col md:flex-row-reverse;
 }
 
-/**
- * Wadah untuk masing-masing panel (Swap dan Liquidity).
- * Mengatur lebar maksimum agar tidak terlalu besar.
- */
 .swap-panel-container,
 .liquidity-panel-container {
   @apply w-full max-w-md;
 }
 
-/**
- * Judul khusus untuk panel Likuiditas.
- */
 .liquidity-panel-title {
   @apply text-2xl font-semibold text-center mb-4;
 }
