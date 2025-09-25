@@ -2,7 +2,7 @@
 
 ---
 
-Build on **KiChain**.  
+Build on **KiiChain**.  
 Built on KiiChain.
 KimCil is a blockchain-based NFT game with a stake-to-earn mechanism, token swaps, and a faucet to support the ecosystem.
 
@@ -20,7 +20,7 @@ KimCil is a blockchain-based NFT game with a stake-to-earn mechanism, token swap
 
 ---
 
-## 🌐 KiChain Token Addresses
+## 🌐 KiiChain Token Addresses
 
 | Token | Address |
 |-------|---------|
@@ -37,7 +37,7 @@ KimCil is a blockchain-based NFT game with a stake-to-earn mechanism, token swap
 ## 🚀 Features
 
 - NFT-based game with a **Stake-to-Earn** mechanism
-- Token swap between ERC20 tokens in the KiChain ecosystem
+- Token swap between ERC20 tokens in the KiiChain ecosystem
 - Faucet for testnet token distribution
 - Full support for **KiiChain**
 

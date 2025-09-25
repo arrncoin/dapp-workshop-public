@@ -2,8 +2,9 @@
 
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { http } from "wagmi";
+import type { Chain } from "viem";
 
-const kiichainTestnet = {
+export const kiichainTestnet = {
   id: 1336,
   name: "Kiichain Testnet",
   nativeCurrency: {
@@ -12,17 +13,21 @@ const kiichainTestnet = {
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ["https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com"] },
+    public: {
+      http: ["https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com"],
+    },
+    default: {
+      http: ["https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com"],
+    },
   },
   blockExplorers: {
-    default: { name: "kiichain Explorer", url: "https://explorer.kiichain.io/testnet/" },
+    default: {
+      name: "Kiichain Explorer",
+      url: "https://explorer.kiichain.io/testnet/",
+    },
   },
   testnet: true,
-  
-  batch: {
-    multicall: false,
-  },
-};
+} satisfies Chain;
 
 export const config = getDefaultConfig({
   appName: "KimCil DApp",

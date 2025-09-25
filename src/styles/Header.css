@@ -1,7 +1,7 @@
 /* src/styles/Header.css */
 
 .header-container {
-  @apply w-full p-6 flex justify-between items-center bg-gray-800;
+  @apply relative w-full p-6 flex justify-between items-center bg-gray-800;
 }
 
 .header-logo {

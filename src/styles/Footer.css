@@ -3,13 +3,10 @@
 /* Mengubah container menjadi fixed di pojok kanan bawah */
 .footer-container {
   @apply fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50;
-  /* z-50 memastikan ikon berada di atas konten lain */
-  /* Posisi disesuaikan untuk mobile (bawah-4) & desktop (bawah-6) */
 }
 
-/* Penampung untuk link-link sosial media */
 .social-links {
-  @apply flex items-center gap-5; /* Jarak antar ikon sedikit dirapatkan */
+  @apply flex items-center gap-5;
 }
 
 /* Gaya untuk setiap ikon */
@@ -28,8 +25,12 @@
   @apply text-[#1DA1F2];
 }
 .social-icon-link.github:hover {
-  @apply text-white;
+  color: #1DA1F2;
 }
 .social-icon-link.website:hover {
   @apply text-pink-400;
+}
+
+.footer-container {
+  padding-bottom: env(safe-area-inset-bottom);
 }

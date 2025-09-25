@@ -1,7 +1,7 @@
 /* src/styles/HomePage.css */
 
 .homepage-container {
-  @apply flex flex-col items-center text-center mt-20;
+  @apply flex flex-col items-center text-center;
   margin: 20px auto 0;
 }
 

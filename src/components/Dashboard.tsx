@@ -14,7 +14,7 @@ export default function Dashboard() {
         <div className="panel-card max-w-2xl mx-auto">
           <h2 className="dashboard-title">Welcome to KimCil</h2>
           <p className="panel-text mb-6">
-            Explore Swap our staking program to earn rewards.
+            Explore our Swap and staking programs to earn rewards.
           </p>
           
           <div className="flex justify-center">

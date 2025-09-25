@@ -1,5 +1,5 @@
 // src/components/common/ConfirmationModal.tsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../../styles/ConfirmationModal.css';
 
 interface ConfirmationModalProps {
@@ -19,33 +19,88 @@ export default function ConfirmationModal({
   onConfirm,
   title,
   message,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
-  backdropImage = "/img/kimcil.png",
+  confirmText = 'Confirm',
+  cancelText = 'Cancel',
+  backdropImage = '/img/kimcil.png',
 }: ConfirmationModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
   if (!isOpen) return null;
 
-  // Mengirim URL gambar sebagai CSS custom property
+  // Custom CSS variable untuk background
   const cardStyle = {
     '--backdrop-image': `url(${backdropImage})`,
   } as React.CSSProperties;
 
+  // Tutup dengan ESC
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  // Autofokus ke modal saat terbuka
+  useEffect(() => {
+    if (isOpen && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [isOpen]);
+
   return (
-    <div className="modal-backdrop animate-fade-in">
-      <div style={cardStyle} className="modal-card animate-fade-in-up">
-        
-        <h3 className="modal-title">{title}</h3>
-        <p className="modal-message">{message}</p>
-        
+    <div
+      className="modal-backdrop animate-fade-in"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+    >
+      <div
+        ref={modalRef}
+        style={cardStyle}
+        className="modal-card animate-fade-in-up"
+        tabIndex={-1}
+      >
+        {/* Tombol close (aksesibilitas penting) */}
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="Close modal"
+          onClick={onClose}
+        >
+          ×
+        </button>
+
+        <h3 id="modal-title" className="modal-title">
+          {title}
+        </h3>
+        <p
+          id="modal-description"
+          className="modal-message"
+          aria-live="polite"
+        >
+          {message}
+        </p>
+
         <div className="modal-actions">
-          <button onClick={onClose} className="modal-button cancel">
+          <button
+            type="button"
+            onClick={onClose}
+            className="modal-button cancel"
+          >
             {cancelText}
           </button>
-          <button onClick={onConfirm} className="modal-button confirm">
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="modal-button confirm"
+          >
             {confirmText}
           </button>
         </div>
-
       </div>
     </div>
   );

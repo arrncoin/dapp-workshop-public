@@ -10,7 +10,7 @@ import {
 } from "wagmi";
 import { parseUnits, maxUint256, formatUnits } from "viem";
 import { ERC20_ABI, KIMCIL_ABI, KIMCIL_ADDRESS } from "../../lib/contract";
-import { SUPPORTED_TOKENS } from "../../lib/tokens";
+import { SUPPORTED_TOKENS_GAME } from "../../lib/game-config";
 import "../../styles/SwapPanel.css"; 
 
 // Tipe untuk props komponen SwapActions (tidak berubah)
@@ -30,7 +30,7 @@ function SwapActions({
   needsApproval, isApproving, isSwapping, amount, fromTokenAddress, handleApprove, handleSwap,
   swapButtonText = "Swap", swappingButtonText = "Swapping...",
 }: SwapActionsProps) {
-  const fromTokenSymbol = SUPPORTED_TOKENS.find((t) => t.address === fromTokenAddress)?.symbol || "Token";
+  const fromTokenSymbol = SUPPORTED_TOKENS_GAME.find((t) => t.address === fromTokenAddress)?.symbol || "Token";
 
   if (needsApproval) {
     return (
@@ -53,8 +53,8 @@ export default function SwapPanel() {
   // State utama (tidak berubah)
   const [mode, setMode] = useState<"single" | "multi">("single");
   const [amount, setAmount] = useState("");
-  const [fromTokenAddress, setFromTokenAddress] = useState<`0x${string}`>(SUPPORTED_TOKENS[1].address as `0x${string}`);
-  const [toTokenAddress, setToTokenAddress] = useState<`0x${string}`>(SUPPORTED_TOKENS[2].address as `0x${string}`);
+  const [fromTokenAddress, setFromTokenAddress] = useState<`0x${string}`>(SUPPORTED_TOKENS_GAME[1].address as `0x${string}`);
+  const [toTokenAddress, setToTokenAddress] = useState<`0x${string}`>(SUPPORTED_TOKENS_GAME[2].address as `0x${string}`);
   const [multiTargets, setMultiTargets] = useState<{ token: `0x${string}`; percent: number }[]>([]);
   
   const parsedAmount = amount ? parseUnits(amount, 18) : 0n;
@@ -149,7 +149,7 @@ export default function SwapPanel() {
       address: KIMCIL_ADDRESS, abi: KIMCIL_ABI, functionName: "swapMulti", args: [fromTokenAddress, parsedAmount, tokensOut, percentages],
     });
   };
-  const addTarget = () => setMultiTargets([...multiTargets, { token: SUPPORTED_TOKENS[2].address as `0x${string}`, percent: 0 }]);
+  const addTarget = () => setMultiTargets([...multiTargets, { token: SUPPORTED_TOKENS_GAME[2].address as `0x${string}`, percent: 0 }]);
   const updateTarget = (index: number, key: "token" | "percent", value: string) => {
     const updated = [...multiTargets];
     if (key === "token") { updated[index].token = value as `0x${string}`; }
@@ -192,7 +192,7 @@ export default function SwapPanel() {
           onChange={(e) => setFromTokenAddress(e.target.value as `0x${string}`)}
           className="panel-select"
         >
-          {SUPPORTED_TOKENS.filter((t) => t.address !== "Native").map((token) => (
+          {SUPPORTED_TOKENS_GAME.filter((t) => t.address !== "Native").map((token) => (
             <option key={token.address} value={token.address}>{token.symbol}</option>
           ))}
         </select>
@@ -217,7 +217,7 @@ export default function SwapPanel() {
               onChange={(e) => setToTokenAddress(e.target.value as `0x${string}`)}
               className="panel-select"
             >
-              {SUPPORTED_TOKENS.filter(
+              {SUPPORTED_TOKENS_GAME.filter(
                 (t) => t.address !== "Native" && t.address !== fromTokenAddress
               ).map((token) => (
                 <option key={token.address} value={token.address}>
@@ -232,7 +232,7 @@ export default function SwapPanel() {
               Est. Receive:{" "}
               <strong>
                 {parseFloat(formatUnits(singleEstOutput, 18)).toFixed(4)}{" "}
-                {SUPPORTED_TOKENS.find((t) => t.address === toTokenAddress)?.symbol}
+                {SUPPORTED_TOKENS_GAME.find((t) => t.address === toTokenAddress)?.symbol}
               </strong>
             </div>
           )}
@@ -250,7 +250,7 @@ export default function SwapPanel() {
           <div className="multi-target-list">
             {multiTargets.map((t, i) => {
               const est = multiEstOutputs.find((e, idx) => idx === i && e.token === t.token);
-              const toTokenInfo = SUPPORTED_TOKENS.find(tk => tk.address === t.token);
+              const toTokenInfo = SUPPORTED_TOKENS_GAME.find(tk => tk.address === t.token);
 
               return (
                 <div key={i} className="multi-target-row">
@@ -259,7 +259,7 @@ export default function SwapPanel() {
                     onChange={(e) => updateTarget(i, "token", e.target.value)}
                     className="panel-select multi-target-select"
                   >
-                    {SUPPORTED_TOKENS.filter(
+                    {SUPPORTED_TOKENS_GAME.filter(
                       (tk) => tk.address !== "Native" && tk.address !== fromTokenAddress
                     ).map((token) => (
                       <option key={token.address} value={token.address}>{token.symbol}</option>

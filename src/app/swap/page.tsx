@@ -5,7 +5,7 @@ import { useAccount } from "wagmi";
 import ConnectScreen from "../../components/ConnectScreen";
 import SwapPanel from "../../components/swap/SwapPanel";
 import LiquidityDisplay from "../../components/swap/LiquidityDisplay";
-import { SUPPORTED_TOKENS } from "../../lib/tokens";
+import { SUPPORTED_TOKENS_GAME } from "../../lib/game-config";
 import { IoBatteryChargingOutline } from "react-icons/io5";
 import "../../styles/SwapPage.css"; // Pastikan CSS diimpor
 
@@ -34,7 +34,7 @@ export default function SwapPage() {
             <h3 className="liquidity-panel-title flex items-center justify-center gap-2">
               Pool Liquidity <IoBatteryChargingOutline />
               </h3>
-            {SUPPORTED_TOKENS
+            {SUPPORTED_TOKENS_GAME
               .filter(token => token.address !== 'Native')
               .map(token => (
                 <LiquidityDisplay
