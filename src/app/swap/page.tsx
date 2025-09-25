@@ -7,7 +7,7 @@ import SwapPanel from "../../components/swap/SwapPanel";
 import LiquidityDisplay from "../../components/swap/LiquidityDisplay";
 import { SUPPORTED_TOKENS_GAME } from "../../lib/game-config";
 import { IoBatteryChargingOutline } from "react-icons/io5";
-import "../../styles/SwapPage.css"; // Pastikan CSS diimpor
+import "../../styles/SwapPage.module.css"; // Pastikan CSS diimpor
 
 export default function SwapPage() {
   const { isConnected } = useAccount();

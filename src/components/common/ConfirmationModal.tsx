@@ -55,59 +55,57 @@ export default function ConfirmationModal({
   if (!isOpen) return null;
 
   return (
+  <div className="modal-backdrop animate-fade-in">
     <div
-      className="modal-backdrop animate-fade-in"
+      ref={modalRef}
+      style={cardStyle}
+      className="modal-card animate-fade-in-up"
+      tabIndex={-1}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
     >
-      <div
-        ref={modalRef}
-        style={cardStyle}
-        className="modal-card animate-fade-in-up"
-        tabIndex={-1}
+      {/* Tombol close (aksesibilitas penting) */}
+      <button
+        type="button"
+        className="modal-close"
+        aria-label="Close modal"
+        onClick={onClose}
       >
-        {/* Tombol close (aksesibilitas penting) */}
+        ×
+      </button>
+
+      <h3 id="modal-title" className="modal-title">
+        {title}
+      </h3>
+      <p
+        id="modal-description"
+        className="modal-message"
+        aria-live="polite"
+      >
+        {message}
+      </p>
+
+      <div className="modal-actions">
         <button
           type="button"
-          className="modal-close"
-          aria-label="Close modal"
           onClick={onClose}
+          className="modal-button cancel"
+          aria-label={`Cancel: ${title}`}
         >
-          ×
+          {cancelText}
         </button>
-
-        <h3 id="modal-title" className="modal-title">
-          {title}
-        </h3>
-        <p
-          id="modal-description"
-          className="modal-message"
-          aria-live="polite"
+        <button
+          type="button"
+          onClick={onConfirm}
+          className="modal-button confirm"
+          aria-label={`Confirm: ${title}`}
         >
-          {message}
-        </p>
-
-        <div className="modal-actions">
-          <button
-            type="button"
-            onClick={onClose}
-            className="modal-button cancel"
-            aria-label={`Cancel: ${title}`}
-          >
-            {cancelText}
-          </button>
-          <button
-            type="button"
-            onClick={onConfirm}
-            className="modal-button confirm"
-            aria-label={`Confirm: ${title}`}
-          >
-            {confirmText}
-          </button>
-        </div>
+          {confirmText}
+        </button>
       </div>
     </div>
+  </div>
   );
 }
