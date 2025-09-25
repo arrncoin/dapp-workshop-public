@@ -20,7 +20,7 @@ export default function Dashboard() {
           <div className="flex justify-center">
             <Link href="/swap" passHref legacyBehavior>
               <a className="btn-primary">
-                Go to Dashboard
+                Go to Swap
               </a>
             </Link>
           </div>

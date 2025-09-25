@@ -1,6 +1,6 @@
 // src/components/common/ConfirmationModal.tsx
-import React, { useEffect, useRef } from 'react';
-import '../../styles/ConfirmationModal.css';
+import React, { useEffect, useRef } from "react";
+import "../../styles/ConfirmationModal.css";
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -19,36 +19,40 @@ export default function ConfirmationModal({
   onConfirm,
   title,
   message,
-  confirmText = 'Confirm',
-  cancelText = 'Cancel',
-  backdropImage = '/img/kimcil.png',
+  confirmText = "Confirm",
+  cancelText = "Cancel",
+  backdropImage = "/img/kimcil.png",
 }: ConfirmationModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  if (!isOpen) return null;
-
   // Custom CSS variable untuk background
   const cardStyle = {
-    '--backdrop-image': `url(${backdropImage})`,
+    "--backdrop-image": `url(${backdropImage})`,
   } as React.CSSProperties;
 
-  // Tutup dengan ESC
+  // Efek: tutup dengan ESC + fokus saat terbuka
   useEffect(() => {
+    if (!isOpen) return;
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     }
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
 
-  // Autofokus ke modal saat terbuka
-  useEffect(() => {
-    if (isOpen && modalRef.current) {
+    document.addEventListener("keydown", handleKeyDown);
+
+    if (modalRef.current) {
       modalRef.current.focus();
     }
-  }, [isOpen]);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  // Render hanya jika modal terbuka
+  if (!isOpen) return null;
 
   return (
     <div
@@ -90,6 +94,7 @@ export default function ConfirmationModal({
             type="button"
             onClick={onClose}
             className="modal-button cancel"
+            aria-label={`Cancel: ${title}`}
           >
             {cancelText}
           </button>
@@ -97,6 +102,7 @@ export default function ConfirmationModal({
             type="button"
             onClick={onConfirm}
             className="modal-button confirm"
+            aria-label={`Confirm: ${title}`}
           >
             {confirmText}
           </button>
