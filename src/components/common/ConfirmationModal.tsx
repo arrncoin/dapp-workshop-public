@@ -1,4 +1,6 @@
 // src/components/common/ConfirmationModal.tsx
+'use client';
+
 import React, { useEffect, useRef } from "react";
 import "../../styles/ConfirmationModal.css";
 
