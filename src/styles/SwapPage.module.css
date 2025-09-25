@@ -28,6 +28,5 @@
 }
 
 .h2 {
-  /* mx-auto akan membuatnya center secara horizontal */
-  @apply mx-auto mt-4 max-w-2xl text-lg text-gray-300 sm:text-xl;
+  @apply mx-auto mt-4 max-w-2xl text-lg text-gray-300 sm:text-xl text-center;
 }
